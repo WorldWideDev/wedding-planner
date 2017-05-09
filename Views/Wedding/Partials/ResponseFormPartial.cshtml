@@ -1,0 +1,13 @@
+@model WeddingPlanner.Models.ResponseForm
+
+<form class="response-form" asp-controller="Wedding" asp-action="RSVP"  method="post">
+    <div class="form-group rf-fg">
+        <select class="form-control" asp-for="@Model.Result">
+            <option value=true>Going</option>
+            <option value=false>Not Going</option>
+        </select>
+    </div>
+    <input type="hidden" value="@Model.UserId" asp-for="@Model.UserId">
+    <input type="hidden" value="@ViewData["WeddingId"]" asp-for="@Model.WeddingId">
+    <input class="btn btn-primary" type="submit" value="RSVP">
+</form>

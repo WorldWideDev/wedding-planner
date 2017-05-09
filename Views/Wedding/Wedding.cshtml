@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model WeddingPlanner.Models.NewWeddingForm
+
+<h1>Plan Your Wedding</h1>
+<ul class="nav-links">
+    <li><a href="~/dashboard">Dashboard</a></li>
+    <li><a href="~/logout">Logout</a></li>
+</ul>
+<form asp-controller="Wedding" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="@Model.WedderOne"></label>
+        <div>
+            <span asp-validation-for="@Model.WedderOne"></span>
+            <input type="text" asp-for="@Model.WedderOne">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.WedderTwo"></label>
+        <div>
+            <span asp-validation-for="@Model.WedderTwo"></span>
+            <input type="text" asp-for="@Model.WedderTwo">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Date"></label>
+        <div>
+            <span asp-validation-for="@Model.Date"></span>
+            <input type="date" asp-for="@Model.Date">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Street"></label>
+        <div>
+            <span asp-validation-for="@Model.Street"></span>
+            <input type="text" asp-for="@Model.Street">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.City"></label>
+        <div>
+            <span asp-validation-for="@Model.City"></span>
+            <input type="text" asp-for="@Model.City">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.State"></label>
+        <div>
+            <span asp-validation-for="@Model.State"></span>
+            <input type="text" asp-for="@Model.State">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Zip"></label>
+        <div>
+            <span asp-validation-for="@Model.Zip"></span>
+            <input type="number" asp-for="@Model.Zip">
+        </div>
+    </div>
+    <input class='btn btn-primary' type="submit" value='Add'>
+</form>

@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@using WeddingPlanner.Models
+@using System.Linq
+@model WeddingPlanner.Models.DashboardViewBundle
+
+<div class="dashboard">
+    <h1>Wedding Dashboard</h1>
+    <ul class="nav-links">
+        <li><a class="nav-link" class="pull-right" href="logout">Logout</a></li>
+    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guest</th>
+                <th>Action</th>
+            </tr>
+        </thead>`
+        <tbody>
+            @foreach(Wedding w in @Model.AllWeddings)
+            {
+                <tr>
+                    <td><a href=@string.Format("/wedding/{0}", w.Id)>@w.WedderOne and @w.WedderTwo</a></td>
+                    <td>@w.Date.ToString("dddd, MMMMM dd, yyyy")</td>
+                    <td>@w.Responses.Where( res => res.IsGoing == true).Count()</td>
+                    <td>
+                        @if(w.Host.Id == @Model.LogUser.Id)
+                        {
+                            <a href=@string.Format("/wedding/delete/{0}", w.Id) class="btn btn-danger">Delete</a>
+                        }
+                        else 
+                        {
+                            bool responded = false;
+                            foreach (Response r in @w.Responses)
+                            {
+                                if(r.UserId == @Model.LogUser.Id)
+                                {
+                                    responded = true;
+                                    if(r.IsGoing == true)
+                                    {
+                                        <a href=@string.Format("/respond/update/{0}/{1}/{2}",Model.LogUser.Id, w.Id, r.Id) class="btn btn-warning">Un-RSVP</a>
+                                    }
+                                    else
+                                    {
+                                        <a href=@string.Format("/respond/update/{0}/{1}/{2}",Model.LogUser.Id, w.Id, r.Id) class="btn btn-primary">RSVP</a>
+                                    }
+                                }
+                            }
+                            @if(!responded)
+                            {
+                                @Html.Partial("./Partials/ResponseFormPartial", @Model.NewResponse,
+                                    new ViewDataDictionary(this.ViewData) {{ "weddingId", @w.Id }})
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary pull-right" href='wedding/new'>New Wedding</a class>
+</div>

@@ -1,0 +1,51 @@
+/*Write all of your CSS here*/
+.form-block{
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+}
+.form-group span{
+    display: block;
+    color: #ff5959;
+    font-weight: bold;
+}
+
+/*===========================================================
+++++++++++++++++++ DASHBOARD ++++++++++++++++++++++++++++++++
+=============================================================*/
+.dashboard h1{
+    display: inline-block;
+}
+#logout-link{
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+.dashboard form{
+    clear: both;
+}
+
+/*===========================================================
+++++++++++++++++++ NEW WEDDING ++++++++++++++++++++++++++++++
+=============================================================*/
+.rf-fg{
+    display: inline;
+}
+    .rf-fg select{
+        display: inline-block;
+        width: 60%;
+    }
+
+/*===========================================================
+++++++++++++++++++ SHOW WEDDING +++++++++++++++++++++++++++++
+=============================================================*/
+#show-wedding-body ul{
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
+#map{
+    width: 55%;
+    height: 300px;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -1,0 +1,40 @@
+@model WeddingPlanner.Models.NewUserForm
+
+<form asp-controller="Home" asp-action="Register" method="post">
+    <div class="form-group">
+        <label asp-for="@Model.FirstName"></label>
+        <div>
+            <span asp-validation-for="@Model.FirstName"></span>
+            <input type="text" asp-for="@Model.FirstName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.LastName"></label>
+        <div>
+            <span asp-validation-for="@Model.LastName"></span>
+            <input type="text" asp-for="@Model.LastName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Email"></label>
+        <div>
+            <span asp-validation-for="@Model.Email"></span>
+            <input type="email" asp-for="@Model.Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Password"></label>
+        <div>
+            <span asp-validation-for="@Model.Password"></span>
+            <input type="password" asp-for="@Model.Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.PasswordConfirm"></label>
+        <div>
+            <span asp-validation-for="@Model.PasswordConfirm"></span>
+            <input type="password" asp-for="@Model.PasswordConfirm">
+        </div>
+    </div>
+    <input class='btn btn-primary' type="submit" value='Register'>
+</form>

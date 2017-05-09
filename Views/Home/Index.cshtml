@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model WeddingPlanner.Models.HomeViewBundle
+
+<h1>Welcome to the Illest Wedding Planner</h1>
+<hr>
+
+<div class="form-block">
+    <h2>Register.</h2>
+    @Html.Partial("./Partials/RegisterUserPartial", @Model.RegisterUser)
+</div>
+
+<div class="form-block">
+    <h2>Login.</h2>
+    @Html.Partial("./Partials/LoginUserPartial", @Model.LoginUser)
+</div>

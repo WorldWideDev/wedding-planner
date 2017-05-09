@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@using WeddingPlanner.Models
+@model WeddingPlanner.Models.ShowWeddingBundle
+
+<div class="container">
+    <h1>@Model.TheWedding.WedderOne and @Model.TheWedding.WedderTwo</h1>
+    <ul class="nav-links">
+        <li><a class="nav-link" class="pull-right" href="~/dashboard">Dashboard</a></li>
+        <li><a class="nav-link" class="pull-right" href="~/logout">Logout</a></li>
+    </ul>
+    <h2>@Model.TheWedding.Date.ToString("dddd, MMMMM dd, yyyy")</h2>
+    <div id='show-wedding-body'>
+        <h3>Guests:</h3>
+        <ul>
+            @foreach(Response g in @Model.Yeses)
+            {
+                <li>@g.User.FirstName @g.User.LastName</li>
+            }
+        </ul>
+        <div data="@Model.TheAddress" id='map'></div>
+    </div>
+</div>
+<script src="~/js/initMap.js"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhfnIVX0r7CMudJ0oLA3Rdp1bwGo5B1o&callback=initMap">
+</script>
